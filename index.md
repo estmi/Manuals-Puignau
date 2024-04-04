@@ -14,8 +14,16 @@
 
 ### [ALoggerFiles][ALoggerFiles]
 
+## Migracio Ahora
+
+### [AFormesPagament][AFormesPagament]
+
+### [DAhora][DAhora]
+
 [MArticlePreparaExcepcio]: Comandes/MArticlePreparaExcepcio.md
 [DPressupostos]: Comandes/DPressupostos.md
 [AUltraMsg]: Library/WhatsApp/UltraMsg/AUltraMsg.md
 [ALoggerFiles]: Library/Logger/ALoggerFiles.md
 [FMain]: Comandes/FMain.md
+[DAhora]: Migracio%20Ahora/DAhora.md
+[AFormesPagament]: Migracio%20Ahora/AFormesPagament.md
