@@ -14,8 +14,8 @@
 
 ### [ALoggerFiles][ALoggerFiles]
 
-[MArticlePreparaExcepcio]: Comandes/MArticlePreparaExcepcio
-[DPressupostos]: Comandes/DPressupostos
-[AUltraMsg]: Library/WhatsApp/UltraMsg/AUltraMsg
-[ALoggerFiles]: Library/Logger/ALoggerFiles
-[FMain]: Comandes/FMain
+[MArticlePreparaExcepcio]: Comandes/MArticlePreparaExcepcio.md
+[DPressupostos]: Comandes/DPressupostos.md
+[AUltraMsg]: Library/WhatsApp/UltraMsg/AUltraMsg.md
+[ALoggerFiles]: Library/Logger/ALoggerFiles.md
+[FMain]: Comandes/FMain.md
