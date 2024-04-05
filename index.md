@@ -16,14 +16,24 @@
 
 ## Migracio Ahora
 
-### [AFormesPagament][AFormesPagament]
+### [README][READMEAhora]
 
-### [DAhora][DAhora]
+### [MySQL]
 
-[MArticlePreparaExcepcio]: Comandes/MArticlePreparaExcepcio.md
-[DPressupostos]: Comandes/DPressupostos.md
-[AUltraMsg]: Library/WhatsApp/UltraMsg/AUltraMsg.md
-[ALoggerFiles]: Library/Logger/ALoggerFiles.md
-[FMain]: Comandes/FMain.md
-[DAhora]: Migracio%20Ahora/DAhora.md
-[AFormesPagament]: Migracio%20Ahora/AFormesPagament.md
+### [StoredProcedures]
+
+### [DAhora]
+
+### [AFormesPagament]
+
+[MArticlePreparaExcepcio]: Comandes/MArticlePreparaExcepcio
+[DPressupostos]: Comandes/DPressupostos
+[AUltraMsg]: Library/WhatsApp/UltraMsg/AUltraMsg
+[ALoggerFiles]: Library/Logger/ALoggerFiles
+[FMain]: Comandes/FMain
+
+[READMEAhora]: Migracio_Ahora/README
+[AFormesPagament]: Migracio_Ahora/AFormesPagament
+[DAhora]: Migracio_Ahora/DAhora
+[MySQL]: Migracio_Ahora/MySQL
+[StoredProcedures]: Migracio_Ahora/StoredProcedures

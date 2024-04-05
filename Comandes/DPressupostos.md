@@ -1,8 +1,6 @@
-# [..](..)\Comandes
+# [..](..)\Comandes\DPressupostos
 
-## DPressupostos
-
-### Index
+## Index
 
 - [Index](#index)
 - [Descripcio](#descripcio)
@@ -22,49 +20,49 @@
   - [procedure CrearClientPlantillesComercial(comercial: Integer)](#procedure-crearclientplantillescomercialcomercial-integer)
   - [procedure ObrirEmail(Client: Integer) \[DEPRECATED\]](#procedure-obriremailclient-integer-deprecated)
   - [procedure ObrirPressupost(Pressupost: Integer; Data: TDateTime)](#procedure-obrirpressupostpressupost-integer-data-tdatetime)
-    - [ObrirPressupost\\ procedure CarregarEmails \[DEPRECATED\]](#obrirpressupost-procedure-carregaremails-deprecated)
-    - [ObrirPressupost\\ procedure CarregarDetallPressupost](#obrirpressupost-procedure-carregardetallpressupost)
-    - [ObrirPressupost\\ procedure CarregarDetallPressupostNoArticlePrepara](#obrirpressupost-procedure-carregardetallpressupostnoarticleprepara)
+    - [procedure CarregarEmails \[DEPRECATED\]](#procedure-carregaremails-deprecated)
+    - [procedure CarregarDetallPressupost](#procedure-carregardetallpressupost)
+    - [procedure CarregarDetallPressupostNoArticlePrepara](#procedure-carregardetallpressupostnoarticleprepara)
   - [procedure ActualitzarPressupost](#procedure-actualitzarpressupost)
-    - [ActualitzarPressupost\\ procedure EliminarDetallPressupost](#actualitzarpressupost-procedure-eliminardetallpressupost)
-    - [ActualitzarPressupost\\ procedure ObrirDetallPressupost](#actualitzarpressupost-procedure-obrirdetallpressupost)
-    - [ActualitzarPressupost\\ procedure AfegirLiniesDataDetallPressupost](#actualitzarpressupost-procedure-afegirliniesdatadetallpressupost)
-    - [ActualitzarPressupost\\ procedure AfegirLiniesCompletDetallPressupost \[DEPRECATED\]](#actualitzarpressupost-procedure-afegirliniescompletdetallpressupost-deprecated)
+    - [procedure EliminarDetallPressupost](#procedure-eliminardetallpressupost)
+    - [procedure ObrirDetallPressupost](#procedure-obrirdetallpressupost)
+    - [procedure AfegirLiniesDataDetallPressupost](#procedure-afegirliniesdatadetallpressupost)
+    - [procedure AfegirLiniesCompletDetallPressupost \[DEPRECATED\]](#procedure-afegirliniescompletdetallpressupost-deprecated)
   - [function EsAdministrador: Boolean](#function-esadministrador-boolean)
   - [procedure ObrirComercials](#procedure-obrircomercials)
   - [procedure ObrirZones](#procedure-obrirzones)
   - [procedure ObrirCapsDeZona](#procedure-obrircapsdezona)
   - [procedure LlegirPlantilles(comercial: Integer; Tipus: Integer = -1)](#procedure-llegirplantillescomercial-integer-tipus-integer---1)
 - [SQL](#sql)
-  - [SQL\\ quArticlePreparaPressupostos](#sql-quarticlepreparapressupostos)
-  - [SQL\\ quDeletePressupost](#sql-qudeletepressupost)
-  - [SQL\\ quClients](#sql-quclients)
-  - [SQL\\ quCopiarPressupost](#sql-qucopiarpressupost)
-  - [SQL\\ quCrearClientPlantilles](#sql-qucrearclientplantilles)
-  - [SQL\\ quEmail](#sql-quemail)
-  - [SQL\\ quDetallPressupost](#sql-qudetallpressupost)
-  - [SQL\\ quDetallPressupostNOArticlePrepara](#sql-qudetallpressupostnoarticleprepara)
-  - [SQL\\ quDetallPressupostInsert](#sql-qudetallpressupostinsert)
-  - [SQL\\ quDetallPressupostDelete](#sql-qudetallpressupostdelete)
-  - [SQL\\ quComercials](#sql-qucomercials)
-    - [Exemple Comercials](#exemple-comercials)
-  - [SQL\\ quZones](#sql-quzones)
-    - [Exemple Zones](#exemple-zones)
-  - [SQL\\ quCapDeZones](#sql-qucapdezones)
-  - [SQL\\ quPlantilles](#sql-quplantilles)
-  - [SQL\\ quDetallPlantilles](#sql-qudetallplantilles)
-  - [SQL\\ quDetallPressupostConfig \[DEPRECATED\]](#sql-qudetallpressupostconfig-deprecated)
+  - [quArticlePreparaPressupostos](#quarticlepreparapressupostos)
+  - [quDeletePressupost](#qudeletepressupost)
+  - [quClients](#quclients)
+  - [quCopiarPressupost](#qucopiarpressupost)
+  - [quCrearClientPlantilles](#qucrearclientplantilles)
+  - [quEmail](#quemail)
+  - [quDetallPressupost](#qudetallpressupost)
+  - [quDetallPressupostNOArticlePrepara](#qudetallpressupostnoarticleprepara)
+  - [quDetallPressupostInsert](#qudetallpressupostinsert)
+  - [quDetallPressupostDelete](#qudetallpressupostdelete)
+  - [quComercials](#qucomercials)
+    - [Exemple](#exemple)
+  - [quZones](#quzones)
+    - [Exemple](#exemple-1)
+  - [quCapDeZones](#qucapdezones)
+  - [quPlantilles](#quplantilles)
+  - [quDetallPlantilles](#qudetallplantilles)
+  - [quDetallPressupostConfig \[DEPRECATED\]](#qudetallpressupostconfig-deprecated)
 
 <!-- markdownlint-disable-next-line MD033 -->
 <div class="page"/>
 
-### Descripcio
+## Descripcio
 
 DataModule utilitzat en el programa PGestioComercial. Tot el que es diu pressupost en aquest DataModule es refereix a les **Tarifes Personalitzades**.
 
-### Interface
+## Interface
 
-#### published
+### published
 
 [DataModuleCreate](#procedure-datamodulecreatesender-tobject)\
 [quArticlePreparaPressupostosNewRecord](#procedure-quarticlepreparapressupostosnewrecorddataset-tdataset)
@@ -74,7 +72,7 @@ procedure DataModuleCreate(Sender: TObject);
 procedure quArticlePreparaPressupostosNewRecord(DataSet: TDataSet);
 ```
 
-#### private
+### private
 
 [EliminarTarifaEspecial](#procedure-eliminartarifaespecialid-integer)
 
@@ -90,7 +88,7 @@ FTipusUsuari: Integer;
 procedure EliminarTarifaEspecial(id: Integer);
 ```
 
-#### public
+### public
 
 [LlegirPressupostos](#procedure-llegirpressupostoscomercial-client-tipus-integer-actiu-boolean--false)\
 [LlegirClientsEx](#procedure-llegirclientsex_comercial-integer-_zona-integer-clientsbaixa-boolean)\
@@ -138,12 +136,12 @@ property CapZona: Integer read FCapZona write FCapZona;
 property TipusUsuari: Integer read FTipusUsuari write FTipusUsuari;
 ```
 
-### Events
+## Events
 
-#### procedure DataModuleCreate(Sender: TObject)
+### procedure DataModuleCreate(Sender: TObject)
 
 No caldria, ja que al iniciar l'App es fa la lectura de les dades amb els paramentres pertinents.
-[quArticlePreparaPressupostos](#sql-quarticlepreparapressupostos)
+[quArticlePreparaPressupostos](#quarticlepreparapressupostos)
 
 ```Delphi
 procedure TdmPressupostos.DataModuleCreate(Sender: TObject);
@@ -152,11 +150,11 @@ begin
 end;
 ```
 
-#### procedure quArticlePreparaPressupostosNewRecord(DataSet: TDataSet)
+### procedure quArticlePreparaPressupostosNewRecord(DataSet: TDataSet)
 
 S'assigna el propietari de la tarifa personalitzada.
 
-[quArticlePreparaPressupostos](#sql-quarticlepreparapressupostos)
+[quArticlePreparaPressupostos](#quarticlepreparapressupostos)
 
 ```Delphi
 procedure TdmPressupostos.quArticlePreparaPressupostosNewRecord(DataSet: TDataSet);
@@ -165,13 +163,13 @@ begin
 end;
 ```
 
-### Metodes
+## Metodes
 
-#### procedure EliminarTarifaEspecial(id: Integer)
+### procedure EliminarTarifaEspecial(id: Integer)
 
 Elimina una tarifa personalitzada i totes les seves linies filles del detall.
 
-[quDeletePressupost](#sql-qudeletepressupost)
+[quDeletePressupost](#qudeletepressupost)
 
 ```Delphi
 procedure TdmPressupostos.EliminarTarifaEspecial(id: Integer);
@@ -184,7 +182,7 @@ begin
 end;
 ```
 
-#### procedure LlegirPressupostos(comercial, Client, Tipus: Integer; actiu: Boolean = false)
+### procedure LlegirPressupostos(comercial, Client, Tipus: Integer; actiu: Boolean = false)
 
 Llegir Tarifes personalitzades.\
 Paramestres:
@@ -199,7 +197,7 @@ Paramestres:
   - 1 Nomes DataInici <= @Today <= DataFi
 - Tipus: Ens indica si nomes volem veure Fresc, Congelat o Llotja
 
-[quArticlePreparaPressupostos](#sql-quarticlepreparapressupostos)
+[quArticlePreparaPressupostos](#quarticlepreparapressupostos)
 
 ```Delphi
 procedure TdmPressupostos.LlegirPressupostos(comercial, Client, Tipus: Integer; actiu: Boolean = false);
@@ -232,10 +230,10 @@ begin
 end;
 ```
 <!-- markdownlint-disable-next-line MD037 -->
-#### procedure LlegirClientsEx(_comercial: Integer; _Zona: Integer; ClientsBaixa: Boolean)
+### procedure LlegirClientsEx(_comercial: Integer; _Zona: Integer; ClientsBaixa: Boolean)
 
 Si ens passen tots els parametres a -1, si el CapZona = -1 i CapZonaInicial = -1 ens indica que es un comercial sense permis, per el qual nomes ha de poder veure la seva zona i comercial.
-[quClients](#sql-quclients)
+[quClients](#quclients)
 
 ```Delphi
 procedure TdmPressupostos.LlegirClientsEx(_comercial: Integer; _Zona: Integer;
@@ -265,7 +263,7 @@ begin
 end;
 ```
 
-#### procedure EliminarTarifaEspecialActual
+### procedure EliminarTarifaEspecialActual
 
 Elimina la tarifa personalitzada i totes les seves linies filles del detall.
 
@@ -278,11 +276,11 @@ begin
 end;
 ```
 
-#### procedure CopiarTarifaPers(TarifaPersOld, ClientNew: Integer; DataInici, DataFi: TDateTime)
+### procedure CopiarTarifaPers(TarifaPersOld, ClientNew: Integer; DataInici, DataFi: TDateTime)
 
 Copia les dades d'una **TarifaPersOld** a un **ClientNew** amb les dates seleccionades.
 
-[quCopiarPressupost](#sql-qucopiarpressupost)
+[quCopiarPressupost](#qucopiarpressupost)
 
 ```Delphi
 procedure TdmPressupostos.CopiarTarifaPers(TarifaPersOld, ClientNew: Integer;
@@ -309,7 +307,7 @@ begin
 end;
 ```
 
-#### procedure CrearClientPlantillesComercial(comercial: Integer)
+### procedure CrearClientPlantillesComercial(comercial: Integer)
 
 Comproba i crea un client Plantilles pel comercial.\
 Aquest client te com a funcio guardar plantilles per a despres poder copiar cap a un client.
@@ -326,12 +324,12 @@ begin
 end;
 ```
 
-#### procedure ObrirEmail(Client: Integer) [DEPRECATED]
+### procedure ObrirEmail(Client: Integer) [DEPRECATED]
 
 DEPRECATED.
 Nomes te un DataSource assignat i no s'utilitza per a res, segurament es podria eliminar.
 
-[quEmail](#sql-quemail)
+[quEmail](#quemail)
 
 ```Delphi
 procedure TdmPressupostos.ObrirEmail(Client: Integer);
@@ -354,13 +352,13 @@ begin
 end;
 ```
 
-#### procedure ObrirPressupost(Pressupost: Integer; Data: TDateTime)
+### procedure ObrirPressupost(Pressupost: Integer; Data: TDateTime)
 
 Llegeix i carrega les dades d'una **Tarifa Pers**.
 
-[CarregarEmails](#obrirpressupost-procedure-carregaremails-deprecated)
-[CarregarDetallPressupost](#obrirpressupost-procedure-carregardetallpressupost)
-[CarregarDetallPressupostNoArticlePrepara](#obrirpressupost-procedure-carregardetallpressupostnoarticleprepara)
+[CarregarEmails](#procedure-carregaremails-deprecated)
+[CarregarDetallPressupost](#procedure-carregardetallpressupost)
+[CarregarDetallPressupostNoArticlePrepara](#procedure-carregardetallpressupostnoarticleprepara)
 
 ```Delphi
 procedure TdmPressupostos.ObrirPressupost(Pressupost: Integer; Data: TDateTime);
@@ -371,7 +369,7 @@ begin
 end;
 ```
 
-##### ObrirPressupost\ procedure CarregarEmails [DEPRECATED]
+#### procedure CarregarEmails [DEPRECATED]
 
 DEPRECATED.
 
@@ -384,7 +382,7 @@ begin
 end;
 ```
 
-##### ObrirPressupost\ procedure CarregarDetallPressupost
+#### procedure CarregarDetallPressupost
 
 Llegeix la Tarifa Personalitzada del servidor i la carrega a una taula en memoria.
 
@@ -398,7 +396,7 @@ dxMemData1:
 - ArticlePrepara: TBooleanField
 - Familia: TStringField
 
-[quDetallPressupost](#sql-qudetallpressupost)
+[quDetallPressupost](#qudetallpressupost)
 
 ```Delphi
 procedure CarregarDetallPressupost;
@@ -433,11 +431,11 @@ begin
 end;
 ```
 
-##### ObrirPressupost\ procedure CarregarDetallPressupostNoArticlePrepara
+#### procedure CarregarDetallPressupostNoArticlePrepara
 
 Afegeix tots els articles que estan seleccionats a **Tarifa Personalitzada** i que no es troben a la Tarifa del dia.
 
-[quDetallPressupostNOArticlePrepara](#sql-qudetallpressupostnoarticleprepara)
+[quDetallPressupostNOArticlePrepara](#qudetallpressupostnoarticleprepara)
 
 ```Delphi
 procedure CarregarDetallPressupostNoArticlePrepara;
@@ -470,13 +468,13 @@ begin
 end;
 ```
 
-#### procedure ActualitzarPressupost
+### procedure ActualitzarPressupost
 
 Actualitza un pressupost, eliminant-ne el detall i creant-lo de nou.
 
-[EliminarDetallPressupost](#actualitzarpressupost-procedure-eliminardetallpressupost)\
-[AfegirLiniesDataDetallPressupost](#actualitzarpressupost-procedure-afegirliniesdatadetallpressupost)\
-[AfegirLiniesCompletDetallPressupost DEPRECATED](#actualitzarpressupost-procedure-afegirliniescompletdetallpressupost-deprecated)\
+[EliminarDetallPressupost](#procedure-eliminardetallpressupost)\
+[AfegirLiniesDataDetallPressupost](#procedure-afegirliniesdatadetallpressupost)\
+[AfegirLiniesCompletDetallPressupost DEPRECATED](# procedure-afegirliniescompletdetallpressupost-deprecated)\
 
 ```Delphi
 procedure TdmPressupostos.ActualitzarPressupost;
@@ -493,11 +491,11 @@ begin
 end;
 ```
 
-##### ActualitzarPressupost\ procedure EliminarDetallPressupost
+#### procedure EliminarDetallPressupost
 
 Elimina les linies de la **Tarifa Pers**.
 
-[quDetallPressupostDelete](#sql-qudetallpressupostdelete)
+[quDetallPressupostDelete](#qudetallpressupostdelete)
 
 ```Delphi
 procedure EliminarDetallPressupost;
@@ -508,11 +506,11 @@ procedure EliminarDetallPressupost;
   end;
 ```
 
-##### ActualitzarPressupost\ procedure ObrirDetallPressupost
+#### procedure ObrirDetallPressupost
 
 Obre un query utilitzat per a fer Append de les linies de la **Tarifa Pers**.
 
-[quDetallPressupostInsert](#sql-qudetallpressupostinsert)
+[quDetallPressupostInsert](#qudetallpressupostinsert)
 
 ```Delphi
 procedure ObrirDetallPressupost;
@@ -523,11 +521,11 @@ procedure ObrirDetallPressupost;
   end;
 ```
 
-##### ActualitzarPressupost\ procedure AfegirLiniesDataDetallPressupost
+#### procedure AfegirLiniesDataDetallPressupost
 
-[ObrirDetallPressupost](#actualitzarpressupost-procedure-obrirdetallpressupost)
+[ObrirDetallPressupost](#procedure-obrirdetallpressupost)
 
-Recorrem tota la taula en memoria i en cas de estar inclos a la **Tarifa Personalitzada**, ho guardem a traves de la següent query: [quDetallPressupostInsert](#sql-qudetallpressupostinsert).
+Recorrem tota la taula en memoria i en cas de estar inclos a la **Tarifa Personalitzada**, ho guardem a traves de la següent query: [quDetallPressupostInsert](#qudetallpressupostinsert).
 
 ```Delphi
 procedure AfegirLiniesDataDetallPressupost;
@@ -559,7 +557,7 @@ procedure AfegirLiniesDataDetallPressupost;
   end;
 ```
 
-##### ActualitzarPressupost\ procedure AfegirLiniesCompletDetallPressupost [DEPRECATED]
+#### procedure AfegirLiniesCompletDetallPressupost [DEPRECATED]
 
 DEPRECATED
 
@@ -595,7 +593,7 @@ begin
 end;
 ```
 
-#### function EsAdministrador: Boolean
+### function EsAdministrador: Boolean
 
 Comproba si l'usuari es administrador. **TipusUsuari**, es una property la qual es guarda al primer moment de entrar a la aplicacio.
 
@@ -611,13 +609,13 @@ begin
 end;
 ```
 
-#### procedure ObrirComercials
+### procedure ObrirComercials
 
 Llegeix Comercials.
 
 Query utilitzat al desplegable superior de [FMain][FMain].
 
-[quComercials](#sql-qucomercials)
+[quComercials](#qucomercials)
 
 ```Delphi
 procedure TdmPressupostos.ObrirComercials;
@@ -633,13 +631,13 @@ begin
 end;
 ```
 
-#### procedure ObrirZones
+### procedure ObrirZones
 
 Llegeix les Zones permeses.
 
 Query utilitzat al desplegable superior de [FMain][FMain].
 
-[quZones](#sql-quzones)
+[quZones](#quzones)
 
 ```Delphi
 procedure ObrirZones;
@@ -655,9 +653,9 @@ begin
 end;
 ```
 
-#### procedure ObrirCapsDeZona
+### procedure ObrirCapsDeZona
 
-[quCapDeZones](#sql-qucapdezones)
+[quCapDeZones](#qucapdezones)
 
 ```Delphi
 procedure TdmPressupostos.ObrirCapsDeZona;
@@ -671,14 +669,14 @@ begin
 end;
 ```
 
-#### procedure LlegirPlantilles(comercial: Integer; Tipus: Integer = -1)
+### procedure LlegirPlantilles(comercial: Integer; Tipus: Integer = -1)
 
 Llegeix les plantilles a les que te acces un comercial per a poder utilitzar com a base a una **Tarifa Pers**.
 
 S'utilitza a GFSeleccionarPlantilla el qual et permet seleccionar una plantilla o **Tarifa Pers**. Et llista a l'esquerra el primer query amb les capçaleres i a la dreta el detall de la plantilla.
 
-[quPlantilles](#sql-quplantilles)\
-[quDetallPlantilles](#sql-qudetallplantilles)
+[quPlantilles](#quplantilles)\
+[quDetallPlantilles](#qudetallplantilles)
 
 ```Delphi
 procedure TdmPressupostos.LlegirPlantilles(comercial: Integer; Tipus: Integer = -1);
@@ -702,9 +700,9 @@ begin
 end;
 ```
 
-### SQL
+## SQL
 
-#### SQL\ quArticlePreparaPressupostos
+### quArticlePreparaPressupostos
 
 Query principal de tarifes personalitzades.
 
@@ -770,7 +768,7 @@ and (
     )
 ```
 
-#### SQL\ quDeletePressupost
+### quDeletePressupost
 
 Elimina una tarifa personalitzada i totes les seves linies filles del detall.
 
@@ -785,7 +783,7 @@ where IdPressupost = @Pressupost;
 Delete from ArticlePreparaPressupostos where id = @Pressupost;
 ```
 
-#### SQL\ quClients
+### quClients
 
 Ens retorna un llistat de tots els clients amb informacio sobre **Excepcions**, **Tarifes Personalitzades** i **programacio**.
 
@@ -846,7 +844,7 @@ and (c.DataBaixa is null or @ClientsBaixa = -1)
 order by PreClient, Zona, NomClient, Client
 ```
 
-#### SQL\ quCopiarPressupost
+### quCopiarPressupost
 
 Donada una **Tarifa Personalitzada** base, crea una copia amb les dates passades per parametre i el client establert.
 
@@ -870,7 +868,7 @@ Select SCOPE_IDENTITY() IdPressupost,Article from ArticlePreparaPressupostosLini
 where IdPressupost = @TarifaBase;
 ```
 
-#### SQL\ quCrearClientPlantilles
+### quCrearClientPlantilles
 
 En cas de no existir, crea un client per a el comercial, el qual esta codificat -10**CodiComercial** nom "PLANTILLES **NomComercial**".
 
@@ -891,7 +889,7 @@ where Comercial = @CComercial
 )
 ```
 
-#### SQL\ quEmail
+### quEmail
 
 Nomes te un DataSource assignat i no s'utilitza per a res, segurament es podria eliminar.
 
@@ -899,7 +897,7 @@ Nomes te un DataSource assignat i no s'utilitza per a res, segurament es podria 
 select * from ArticlePreparaClientsEmails
 ```
 
-#### SQL\ quDetallPressupost
+### quDetallPressupost
 
 Llista una **Tarifa Personalitzada**.
 
@@ -977,7 +975,7 @@ Where @Tipus = 3
 order by NomMarca, NomArticle
 ```
 
-#### SQL\ quDetallPressupostNOArticlePrepara
+### quDetallPressupostNOArticlePrepara
 
 Ens retorna tots els articles que tenim seleccionats a la **Tarifa Personalitzada**, i que no es troben al llistat de Tarifa de venda.
 
@@ -989,7 +987,7 @@ where
 	and appl.Article not in (Select Article from ArticlePrepara where Data = :Data)
 ```
 
-#### SQL\ quDetallPressupostInsert
+### quDetallPressupostInsert
 
 Utilitzat per a fer els Appends de una **Tarifa Pers**
 
@@ -1004,7 +1002,7 @@ Where
     IdPressupost = :Pressupost
 ```
 
-#### SQL\ quDetallPressupostDelete
+### quDetallPressupostDelete
 
 Elimina les linies de la **Tarifa Pers** marcat.
 
@@ -1014,11 +1012,11 @@ From ArticlePreparaPressupostosLinies
 Where IdPressupost = :Pressupost
 ```
 
-#### SQL\ quComercials
+### quComercials
 
 Obte un llistat de els comercials disponibles segons si ets un comercial, cap de zona o admin.
 
-##### Exemple Comercials
+#### Exemple
 
 Admin (@Comercial = -1, @CapComercial = -1):
 
@@ -1082,11 +1080,11 @@ Select -1 Comercial, 0 Persona, 'Tots els Comercials' Descripcio, '' Email
 order by Comercial
 ```
 
-#### SQL\ quZones
+### quZones
 
 Obte un llistat de les zones disponibles segons si ets un comercial, cap de zona o admin.
 
-##### Exemple Zones
+#### Exemple
 
 Admin (@CapComercial = -1, @Zona = -1):
 
@@ -1171,7 +1169,7 @@ SELECT distinct -1 Zona
   order by z.Zona
 ```
 
-#### SQL\ quCapDeZones
+### quCapDeZones
 
 Llegir tots els caps de Zona.
 
@@ -1184,7 +1182,7 @@ Join PersonalComercial as PC on PC.Comercial = ZC.CapComercial
 Group by CapComercial
 ```
 
-#### SQL\ quPlantilles
+### quPlantilles
 
 Mostra totes les plantilles que pot utilitzar un Comercial.
 
@@ -1244,7 +1242,7 @@ Where
 Order by app.Tipus,3,c.Comercial,c.client,app.Id
 ```
 
-#### SQL\ quDetallPlantilles
+### quDetallPlantilles
 
 DataSource:= dsPlantilles;
 
@@ -1258,7 +1256,7 @@ left join Articles a on appl.Article = a.Article
 Where appl.IdPressupost = :Id
 ```
 
-#### SQL\ quDetallPressupostConfig [DEPRECATED]
+### quDetallPressupostConfig [DEPRECATED]
 
 No s'utilitza
 
