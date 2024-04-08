@@ -1,4 +1,4 @@
-# [..](..)\Migracio Ahora\ AFormesPagament
+# [..](..)\Migracio Ahora\AFormesPagament
 
 ## Index
 

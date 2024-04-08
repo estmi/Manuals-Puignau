@@ -1,4 +1,4 @@
-# StoredProcedures
+# [..](..)\Migracio Ahora\StoredProcedures
 
 ## Index
 
@@ -21,6 +21,10 @@
   - [SQL](#sql-1)
 - [Pers\_PClientes\_Datos\_Comerciales\_U](#pers_pclientes_datos_comerciales_u)
   - [SQL](#sql-2)
+- [Pers\_PFormasPago\_I](#pers_pformaspago_i)
+  - [SQL](#sql-3)
+- [Pers\_PFormasPago\_Lineas\_I](#pers_pformaspago_lineas_i)
+  - [SQL](#sql-4)
 
 ## Pers_PClientes_Datos_I
 
@@ -836,4 +840,104 @@ EXECUTE @RC = [dbo].[PClientes_Datos_Comerciales_U]
   ,@B2BAdjuntarFactura OUTPUT
   ,@B2BAdjuntarGesDocu OUTPUT
 Return @RC
+```
+
+## Pers_PFormasPago_I
+
+### SQL
+
+```SQL
+alter procedure Pers_PFormasPago_I
+@IdFormaPagoIN int,
+@DescripIN varchar(250)
+as
+DECLARE @RC int
+DECLARE @IdFormaPago [dbo].[T_Forma_Pago]
+DECLARE @CodFPago [dbo].[T_Forma_Pago]
+DECLARE @Descrip varchar(250)
+DECLARE @Fecha [dbo].[T_Fecha_Corta]
+DECLARE @FechaBaja [dbo].[T_Fecha_Corta]
+DECLARE @Activa [dbo].[T_Booleano]
+DECLARE @DiasComerciales [dbo].[T_Booleano]
+DECLARE @Variable [dbo].[T_Booleano]
+DECLARE @IdFPagoPadre [dbo].[T_Forma_Pago]
+DECLARE @DiasMaxPago [dbo].[T_Cantidad]
+DECLARE @IdDoc [dbo].[T_Id_Doc]
+DECLARE @Usuario [dbo].[T_CEESI_Usuario]
+DECLARE @FechaInsertUpdate [dbo].[T_CEESI_Fecha_Sistema]
+
+Set @IdFormaPago = isnull(@IdFormaPagoIN, (select isnull(Max(IdFormaPago),0)+1 from FormasPago))
+Set @CodFPago = @IdFormaPago
+Set @Descrip = @DescripIN
+Set @Fecha = GETDATE()
+Set @Activa = 1
+Set @DiasComerciales = 0
+Set @Variable = 0
+Set @DiasMaxPago = 0
+
+EXECUTE @RC = [dbo].[PFormasPago_I] 
+   @IdFormaPago OUTPUT
+  ,@CodFPago OUTPUT
+  ,@Descrip OUTPUT
+  ,@Fecha OUTPUT
+  ,@FechaBaja OUTPUT
+  ,@Activa OUTPUT
+  ,@DiasComerciales OUTPUT
+  ,@Variable OUTPUT
+  ,@IdFPagoPadre OUTPUT
+  ,@DiasMaxPago OUTPUT
+  ,@IdDoc OUTPUT
+  ,@Usuario OUTPUT
+  ,@FechaInsertUpdate OUTPUT
+
+return @RC
+```
+
+## Pers_PFormasPago_Lineas_I
+
+### SQL
+
+```SQL
+alter procedure Pers_PFormasPago_Lineas_I
+@IdFormaPagoIN [dbo].[T_Forma_Pago],
+@IdTipoEfectoIN [dbo].[T_Id_TipoEfecto],
+@PrimerVencimientoIN smallint,
+@PorcentajeIN float = null,
+@NumVencimientosIN smallint = null
+as
+DECLARE @RC int
+DECLARE @IdFormaPago [dbo].[T_Forma_Pago]
+DECLARE @IdLinea [dbo].[T_Id_Linea]
+DECLARE @IdTipoEfecto [dbo].[T_Id_TipoEfecto]
+DECLARE @Porcentaje float
+DECLARE @Descrip varchar(50)
+DECLARE @PrimerVencimiento smallint
+DECLARE @NumVencimientos smallint
+DECLARE @Periodo smallint
+DECLARE @IdDoc [dbo].[T_Id_Doc]
+DECLARE @Usuario [dbo].[T_CEESI_Usuario]
+DECLARE @FechaInsertUpdate [dbo].[T_CEESI_Fecha_Sistema]
+
+Set @IdFormaPago = @IdFormaPagoIN
+Set @IdTipoEfecto = @IdTipoEfectoIN
+Set @PrimerVencimiento = @PrimerVencimientoIN
+Set @Descrip = (Select Descrip from Efectos_Tipos where Tipo = @IdTipoEfecto)
+Set @IdLinea = (Select isnull(Max(@IdLinea),0)+1 from FormasPago_Lineas where IdFormaPago = @IdFormaPago)
+Set @Porcentaje = isnull(@PorcentajeIN, 100)
+Set @NumVencimientos = isnull(@NumVencimientosIN, 1)
+Set @Periodo = 0
+
+EXECUTE @RC = [dbo].[PFormasPago_Lineas_I] 
+   @IdFormaPago OUTPUT
+  ,@IdLinea OUTPUT
+  ,@IdTipoEfecto OUTPUT
+  ,@Porcentaje OUTPUT
+  ,@Descrip OUTPUT
+  ,@PrimerVencimiento OUTPUT
+  ,@NumVencimientos OUTPUT
+  ,@Periodo OUTPUT
+  ,@IdDoc OUTPUT
+  ,@Usuario OUTPUT
+  ,@FechaInsertUpdate OUTPUT
+return @RC
 ```
