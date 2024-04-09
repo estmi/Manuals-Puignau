@@ -1,31 +1,34 @@
-# [..](..)\Library
+# [..](..)\Library\WhatsApp\UltraMsg\AUltraMsg
 
-## AUltraMsg
-
-### Index
+## Index
 
 - [Index](#index)
 - [TUltraMsg](#tultramsg)
   - [constructor Creator](#constructor-creator)
-  - [class procedure TUltraMsg.EnviarDocument(telf, caption, document, filename: string)](#class-procedure-tultramsgenviardocumenttelf-caption-document-filename-string)
+  - [class procedure EnviarDocument(telf, caption, document, filename: string)](#class-procedure-enviardocumenttelf-caption-document-filename-string)
   - [class procedure EnviarMissatge(telf, body: string)](#class-procedure-enviarmissatgetelf-body-string)
   - [class procedure Terminate(Sender: TObject)](#class-procedure-terminatesender-tobject)
   - [procedure CreateLogger](#procedure-createlogger)
   - [class procedure CrearThread(proce: TProc)](#class-procedure-crearthreadproce-tproc)
   - [procedure GetAcces](#procedure-getacces)
-    - [GetAcces\\ function ObtenirValor(KeyName, DefaultValue: string): string](#getacces-function-obtenirvalorkeyname-defaultvalue-string-string)
+    - [function ObtenirValor(KeyName, DefaultValue: string): string](#function-obtenirvalorkeyname-defaultvalue-string-string)
   - [class function GetInstance: TUltraMsg](#class-function-getinstance-tultramsg)
   - [procedure Init](#procedure-init)
   - [function Enviar(endpoint: string; AParameters: TDictionary\<string, TPair\<string, TRESTRequestParameterOptions\>\>): boolean](#function-enviarendpoint-string-aparameters-tdictionarystring-tpairstring-trestrequestparameteroptions-boolean)
+  - [function EnviarPreguntaGrups(): string](#function-enviarpreguntagrups-string)
+  - [class function ObtenirGrups(telf: string): TdxMemData](#class-function-obtenirgrupstelf-string-tdxmemdata)
+    - [procedure ObrirTaules](#procedure-obrirtaules)
+    - [function CreateField(AMemData: TDataSet; AFieldName: string; AFieldType: TFieldType): TFieldDef](#function-createfieldamemdata-tdataset-afieldname-string-afieldtype-tfieldtype-tfielddef)
+    - [function GetIds(participants: TObjectList\<WhatsAppGroupsResponse.TParticipants\>): boolean](#function-getidsparticipants-tobjectlistwhatsappgroupsresponsetparticipants-boolean)
 - [Unit Methods](#unit-methods)
   - [function StrMaxLen(const S: string; MaxLen: integer): string](#function-strmaxlenconst-s-string-maxlen-integer-string)
   - [function DictionaryToString(dict: TDictionary\<string, TPair\<string, TRESTRequestParameterOptions\>\>): string](#function-dictionarytostringdict-tdictionarystring-tpairstring-trestrequestparameteroptions-string)
   - [function Convertfiletobase64(const AInFileName: string): string](#function-convertfiletobase64const-ainfilename-string-string)
 - [finalization](#finalization)
 
-### TUltraMsg
+## TUltraMsg
 
-#### constructor Creator
+### constructor Creator
 
 [Init](#procedure-init)
 
@@ -38,7 +41,7 @@ begin
 end;
 ```
 
-#### class procedure TUltraMsg.EnviarDocument(telf, caption, document, filename: string)
+### class procedure EnviarDocument(telf, caption, document, filename: string)
 
 Crea un diccionary amb tots els parametres necessaris per UltraMsg.
 Crea una tasca per a enviar un document via WhatsApp.
@@ -74,7 +77,7 @@ begin
 end;
 ```
 
-#### class procedure EnviarMissatge(telf, body: string)
+### class procedure EnviarMissatge(telf, body: string)
 
 Crea un diccionary amb tots els parametres necessaris per UltraMsg.
 Crea una tasca per a enviar un missatge de text via WhatsApp.
@@ -105,7 +108,7 @@ begin
 end;
 ```
 
-#### class procedure Terminate(Sender: TObject)
+### class procedure Terminate(Sender: TObject)
 
 Event OnTerminate dels Threads elimina la tasca de la cua.
 [CrearThread](#class-procedure-crearthreadproce-tproc)
@@ -117,7 +120,7 @@ begin
 end;
 ```
 
-#### procedure CreateLogger
+### procedure CreateLogger
 
 Crea un Logger de arxiu, el qual ens permet guardar tots els moviments que fa la API de UltraMsg.
 
@@ -135,7 +138,7 @@ begin
 end;
 ```
 
-#### class procedure CrearThread(proce: TProc)
+### class procedure CrearThread(proce: TProc)
 
 Crea una tasca de enviament.
 
@@ -152,7 +155,7 @@ begin
 end;
 ```
 
-#### procedure GetAcces
+### procedure GetAcces
 
 Obte els parametres per a poder utilitzar la API de UltraMsg.
 
@@ -198,7 +201,7 @@ begin
 end;
 ```
 
-##### GetAcces\ function ObtenirValor(KeyName, DefaultValue: string): string
+#### function ObtenirValor(KeyName, DefaultValue: string): string
 
 Retorna el valor de la clau solicitada, en cas contrari te un valor per defecte.
 
@@ -212,7 +215,7 @@ function ObtenirValor(KeyName, DefaultValue: string): string;
   end;
 ```
 
-#### class function GetInstance: TUltraMsg
+### class function GetInstance: TUltraMsg
 
 Ens retorna la instancia SingleTon.
 
@@ -232,7 +235,7 @@ begin
 end;
 ```
 
-#### procedure Init
+### procedure Init
 
 [GetAcces](#procedure-getacces)
 [CreateLogger](#procedure-createlogger)
@@ -248,7 +251,7 @@ begin
 end;
 ```
 
-#### function Enviar(endpoint: string; AParameters: TDictionary<string, TPair<string, TRESTRequestParameterOptions>>): boolean
+### function Enviar(endpoint: string; AParameters: TDictionary<string, TPair<string, TRESTRequestParameterOptions>>): boolean
 
 [Init](#procedure-init)
 
@@ -335,9 +338,319 @@ begin
 end;
 ```
 
-### Unit Methods
+### function EnviarPreguntaGrups(): string
 
-#### function StrMaxLen(const S: string; MaxLen: integer): string
+[Init](#procedure-init)
+
+Generem un Client contra l'enpoint `groups` de tipus **GET**, d'aquesta manera ens retornara un JSON el com el seguent:
+
+```JSON
+[
+  {
+    "id": "120363233649835896@g.us",
+    "name": "4269 - La Taverne, Grupo",
+    "isReadOnly": false,
+    "isGroup": true,
+    "groupMetadata": {
+      "description": "",
+      "edit_group_info": "all",
+      "send_messages": "all",
+      "owner": "34689233637@c.us",
+      "creation": 1707756302,
+      "participants": [
+        {
+          "id": "34659420872@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "33782212139@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "34689233637@c.us",
+          "isAdmin": true,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "34679964306@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        }
+      ]
+    },
+    "last_time": 1712580355,
+    "archived": false,
+    "pinned": false,
+    "isMuted": false,
+    "unread": 6
+  },
+  {
+    "id": "120363275178903027@g.us",
+    "name": "Mariscco - Puignau",
+    "isReadOnly": false,
+    "isGroup": true,
+    "groupMetadata": {
+      "description": "",
+      "edit_group_info": "all",
+      "send_messages": "all",
+      "owner": "34630762022@c.us",
+      "creation": 1711623912,
+      "participants": [
+        {
+          "id": "34659420872@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "34630762022@c.us",
+          "isAdmin": true,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "34637813646@c.us",
+          "isAdmin": true,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "34679964306@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        }
+      ]
+    },
+    "last_time": 1712579970,
+    "archived": false,
+    "pinned": false,
+    "isMuted": false,
+    "unread": 1
+  },
+  {
+    "id": "120363280607303979@g.us",
+    "name": "Hotel Palace - Puignau",
+    "isReadOnly": false,
+    "isGroup": true,
+    "groupMetadata": {
+      "description": "",
+      "edit_group_info": "all",
+      "send_messages": "all",
+      "owner": "34630762022@c.us",
+      "creation": 1712578870,
+      "participants": [
+        {
+          "id": "34659420872@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "34630762022@c.us",
+          "isAdmin": true,
+          "isSuperAdmin": true
+        },
+        {
+          "id": "34679964306@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "34619147452@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        },
+        {
+          "id": "34679248368@c.us",
+          "isAdmin": false,
+          "isSuperAdmin": false
+        }
+      ]
+    },
+    "last_time": 1712578907,
+    "archived": false,
+    "pinned": false,
+    "isMuted": false,
+    "unread": 2
+  }
+]
+```
+
+[ALoggerFiles]
+
+```Delphi
+function TUltraMsg.EnviarPreguntaGrups(): string;
+var
+  sentResult: string;
+  LClient: TRESTClient;
+  LRequest: TRESTRequest;
+  LResponse: TRESTResponse;
+  KeyName: string;
+begin
+  if NeedsInit then
+    Init;
+
+  FileLogger.Log('Consultar Grups WA', etDebug);
+  LClient := TRESTClient.Create(URL + '/' + InstanceID + '/groups');
+  try
+    LRequest := TRESTRequest.Create(LClient);
+    try
+      LResponse := TRESTResponse.Create(LClient);
+      try
+        LRequest.Client := LClient;
+        LRequest.Response := LResponse;
+
+        LRequest.Method := rmGET;
+
+        LRequest.AddParameter('token', Token, pkGETorPOST);
+
+        LRequest.Execute;
+        Result := LResponse.JSONText;
+      finally
+        LResponse.Free;
+      end;
+    finally
+      LRequest.Free;
+    end;
+  finally
+    LClient.Free;
+  end;
+  FileLogger.Log('Consultar Grups WA', etDebug);
+  sleep(100);
+end;
+```
+
+### class function ObtenirGrups(telf: string): TdxMemData
+
+Aquest metode genera una taula en memoria i la carrega amb els valors del JSON retornat per [TUltraMsg.Instance.EnviarPreguntaGrups](#function-enviarpreguntagrups-string).
+
+Utilitza un filtre que el trobem a [GetIds](#function-getidsparticipants-tobjectlistwhatsappgroupsresponsetparticipants-boolean).
+
+[ObrirTaules]
+
+```Delphi
+class function TUltraMsg.ObtenirGrups(telf: string): TdxMemData;
+var
+  taGrups: TdxMemData;
+  taGrupsid: TStringField;
+  taGrupstelfParticipant: TStringField;
+  taGrupsNomGrup: TStringField;
+  taGrupsCNomGrup: TStringField;
+  taGrupsNomContacte: TStringField;
+
+var
+  groups: TRoot;
+  iGroup, iParticipant: integer;
+begin
+  ObrirTaules;
+
+  groups := TRoot.Create;
+  groups.AsJson := TUltraMsg.Instance.EnviarPreguntaGrups;
+
+  iGroup := 0;
+  while groups.Items.Count > iGroup do
+  begin
+    iParticipant := 0;
+
+    while groups.Items[iGroup].GroupMetadata.participants.Count > iParticipant do
+    begin
+      if ((telf <> '') and GetIds(groups.Items[iGroup]
+        .GroupMetadata.participants)) or (telf = '') then
+      begin
+        taGrups.Append;
+
+        taGrupsid.Value := groups.Items[iGroup].Id;
+        taGrupsNomGrup.Value := groups.Items[iGroup].Name;
+
+        taGrupstelfParticipant.Value :=
+          Copy(groups.Items[iGroup].GroupMetadata.participants[iParticipant].Id,
+          1, Pos('@', groups.Items[iGroup].GroupMetadata.participants
+          [iParticipant].Id) - 1);
+        taGrupsCNomGrup.Value := taGrupsNomGrup.Value + ' - ' + taGrupsid.Value;
+
+        taGrups.Post;
+      end;
+      iParticipant := iParticipant + 1;
+    end;
+    iGroup := iGroup + 1;
+  end;
+  Result := taGrups;
+end;
+```
+
+#### procedure ObrirTaules
+
+[CreateField](#function-createfieldamemdata-tdataset-afieldname-string-afieldtype-tfieldtype-tfielddef)
+
+Crea una taula en memoria per a despres poder emplenar-la amb els grups de WhatsApp.
+
+```Delphi
+procedure ObrirTaules;
+begin
+  taGrups := TdxMemData.Create(nil);
+  CreateField(taGrups, 'Id', ftString);
+  CreateField(taGrups, 'telfParticipant', ftString);
+  CreateField(taGrups, 'NomGrup', ftString);
+  CreateField(taGrups, 'CNomGrup', ftString);
+  CreateField(taGrups, 'NomContacte', ftString);
+  taGrups.Name := 'taGrups';
+  taGrupsid := TStringField(taGrups.FieldByName('Id'));
+  taGrupstelfParticipant :=
+    TStringField(taGrups.FieldByName('telfParticipant'));
+  taGrupsNomGrup := TStringField(taGrups.FieldByName('NomGrup'));
+  taGrupsCNomGrup := TStringField(taGrups.FieldByName('CNomGrup'));
+  taGrupsNomContacte := TStringField(taGrups.FieldByName('NomContacte'));
+  taGrupsid.Size := 30;
+  taGrupsCNomGrup.Size := 100;
+  taGrupsNomGrup.Size := 50;
+  taGrups.Close;
+  taGrups.Open;
+end;
+```
+
+#### function CreateField(AMemData: TDataSet; AFieldName: string; AFieldType: TFieldType): TFieldDef
+
+Crea un camp en el Dataset.
+
+```Delphi
+function CreateField(AMemData: TDataSet; AFieldName: string; AFieldType:
+    TFieldType): TFieldDef;
+begin
+  if (AMemData = nil) or (AFieldName = '') then
+    Exit;
+  Result := AMemData.FieldDefs.AddFieldDef;
+  with Result do
+  begin
+    Name := AFieldName;
+    DataType := AFieldType;
+    CreateField(AMemData);
+  end;
+end;
+```
+
+#### function GetIds(participants: TObjectList<WhatsAppGroupsResponse.TParticipants>): boolean
+
+Aquesta funcio treballa a mode de filtre per a poder establir si s'ha de carregar o no la linia.
+
+El filtre es el seguent: es comproba que el participant sigui administrador i que sigui tambe el telefon del comercial.
+
+```Delphi
+function GetIds(participants: TObjectList<WhatsAppGroupsResponse.TParticipants>): boolean;
+var
+  i: integer;
+begin
+  i := 0;
+  Result := false;
+  while i < participants.Count do
+  begin
+    Result := Result or ((participants[i].Id = '34' + telf + '@c.us') and
+      participants[i].IsAdmin);
+    i := i + 1;
+  end;
+end;
+```
+
+## Unit Methods
+
+### function StrMaxLen(const S: string; MaxLen: integer): string
 
 Retorna la string entrant pero a la mida establerta amb "..." al final.
 
@@ -355,7 +668,7 @@ begin
 end;
 ```
 
-#### function DictionaryToString(dict: TDictionary<string, TPair<string, TRESTRequestParameterOptions>>): string
+### function DictionaryToString(dict: TDictionary<string, TPair<string, TRESTRequestParameterOptions>>): string
 
 Retorna una string amb els valors del diccionari escrits per poder escriure en el log.
 
@@ -373,7 +686,7 @@ begin
 end;
 ```
 
-#### function Convertfiletobase64(const AInFileName: string): string
+### function Convertfiletobase64(const AInFileName: string): string
 
 Retorna el fitxer passat per parametre en base64.
 
@@ -404,7 +717,7 @@ begin
 end;
 ```
 
-### finalization
+## finalization
 
 Al tancar el programa finalitzen les units. Verifiquem que no hi hagin WhatsApps pendents, ja que sino no s'enviarien i tambe petaria el programa.
 
@@ -416,4 +729,4 @@ finalization
   TUltraMsg.Instance.FileLogger.Destruct;
 ```
 
-[ALoggerFiles]: ../../Logger/ALoggerFiles.html
+[ALoggerFiles]: ../../Logger/ALoggerFiles

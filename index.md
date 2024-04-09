@@ -2,17 +2,21 @@
 
 ## Comandes
 
-### [MArticlePreparaExcepcio][MArticlePreparaExcepcio]
+### [PGestioComercial]
 
-### [DPressupostos][DPressupostos]
+### [DPressupostos]
 
-### [FMain][FMain]
+### [MGestioComercial]
+
+### [FMain]
+
+### [MArticlePreparaExcepcio]
 
 ## Library
 
-### [AUltraMsg][AUltraMsg]
+### [AUltraMsg]
 
-### [ALoggerFiles][ALoggerFiles]
+### [ALoggerFiles]
 
 ## Migracio Ahora
 
@@ -26,15 +30,31 @@
 
 ### [AFormesPagament]
 
+### [Generar Formes Pagament][GenerarFormesPagament]
+
 ## CalgulKgNewronia
+
+### [README][READMECalculKg]
 
 ### [MCalculKg]
 
 ### [DCalculKg]
 
+## FlexyGO
+
+### Dashboards
+
+#### [Dashboards]
+
+#### [Dashboards 2]
+
+#### [UML][DashboardsUML]
+
 [MArticlePreparaExcepcio]: Comandes/MArticlePreparaExcepcio
 [DPressupostos]: Comandes/DPressupostos
 [FMain]: Comandes/FMain
+[MGestioComercial]: Comandes/MGestioComercial
+[PGestioComercial]: Comandes/PGestioComercial
 
 [AUltraMsg]: Library/WhatsApp/UltraMsg/AUltraMsg
 [ALoggerFiles]: Library/Logger/ALoggerFiles
@@ -44,6 +64,12 @@
 [DAhora]: Migracio_Ahora/DAhora
 [MySQL]: Migracio_Ahora/MySQL
 [StoredProcedures]: Migracio_Ahora/StoredProcedures
+[GenerarFormesPagament]: Migracio_Ahora/FormesPagamentAhora
 
+[READMECalculKg]: CalculKgNewronia/README
 [DCalculKg]: CalculKgNewronia/DCalculKg
 [MCalculKg]: CalculKgNewronia/MCalculKg
+
+[Dashboards]: FlexyGO/Dashboards/Dashboards
+[Dashboards 2]: FlexyGO/Dashboards/Dashboards_2
+[DashboardsUML]: FlexyGO/Dashboards/Images/Dashboards%20ER.png

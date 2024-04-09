@@ -655,6 +655,8 @@ end;
 
 ### procedure ObrirCapsDeZona
 
+Llegir tots els caps de Zona.
+
 [quCapDeZones](#qucapdezones)
 
 ```Delphi
@@ -1170,8 +1172,6 @@ SELECT distinct -1 Zona
 ```
 
 ### quCapDeZones
-
-Llegir tots els caps de Zona.
 
 ```SQL
 Select -1 CapComercial, 'Tots' Descripcio
