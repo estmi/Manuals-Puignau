@@ -9,6 +9,11 @@
   - [3. Grup (Grups)](#3-grup-grups)
   - [4. Oferta (Ofertes)](#4-oferta-ofertes)
   - [5. LinkOfertaDashboard (LinkOfertaDashboards)](#5-linkofertadashboard-linkofertadashboards)
+- [Custom Controls](#custom-controls)
+  - [combo\_departaments](#combo_departaments)
+  - [combo\_Grups](#combo_grups)
+  - [combo\_ofertes](#combo_ofertes)
+  - [combo\_dashboards](#combo_dashboards)
 
 ## Objectes FlexyGO
 
@@ -21,6 +26,8 @@
 
 ![PropertiesDashboards]
 
+Departaments es un desplegable amb les seguents opcions: [Combo Departaments](#combo_departaments)
+
 ### 2. Departament (Arees)
 
 |Tipus|Nom|Titol|Icon|
@@ -29,6 +36,8 @@
 |Coleccio|Arees|Arees|![icon-departments]departments|
 
 ![PropertiesArea]
+
+Grups es un desplegable amb les seguents opcions: [Combo Grups](#combo_grups)
 
 ### 3. Grup (Grups)
 
@@ -58,6 +67,102 @@
 |Coleccio|LinksOfertesDashboards|LinksOfertesDashboards|![flx-link]flx-link|
 
 ![PropertiesLink]
+
+Oferta es un desplegable amb les seguents opcions: [Combo Oferta](#combo_departaments)\
+Departament es un desplegable amb les seguents opcions: [Combo Departament](#combo_departaments)\
+Dashboard es un desplegable amb les seguents opcions: [Combo Pantalla](#combo_departaments)
+
+## Custom Controls
+
+### combo_departaments
+
+Type: DbCombo
+
+Select de les dades
+
+```SQL
+SELECT Id
+      ,Descripcio
+      ,IdGrup
+  FROM Pers_Dashboards_Departaments
+```
+
+Template de les dades:
+
+```HTML
+<div>{{Id}} - {{Descripcio}}</div>
+```
+
+SQL Value Field: `Id`
+SQL Display Field: `Descripcio`
+
+### combo_Grups
+
+Type: DbCombo
+
+Select de les dades
+
+```SQL
+Select Id, Descrip from Pers_Dashboards_Grups
+```
+
+Template de les dades:
+
+```HTML
+<div>{{Id}} - {{Descrip}}</div>
+```
+
+SQL Value Field: `Id`
+SQL Display Field: `Descrip`
+
+### combo_ofertes
+
+Type: DbCombo
+
+Select de les dades
+
+```SQL
+SELECT Id
+      ,Descripcio
+  FROM Pers_Dashboards_Ofertes
+```
+
+Select de les dades en mode edicio:
+
+```SQL
+SELECT Id
+      ,Descripcio
+  FROM Pers_Dashboards_Ofertes
+  where DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE())) /*Data Actual*/ BETWEEN DataInici and DataFi
+```
+
+Template de les dades:
+
+```HTML
+<div>{{Id}} - {{Descripcio}}</div>
+```
+
+SQL Value Field: `Id`
+SQL Display Field: `Descripcio`
+
+### combo_dashboards
+
+Type: DbCombo
+
+Select de les dades
+
+```SQL
+Select Id, Descripcio,departament_id from Pers_Dashboards_Dashboards
+```
+
+Template de les dades:
+
+```HTML
+<div>{{Id}} - {{Descripcio}}</div>
+```
+
+SQL Value Field: `Id`
+SQL Display Field: `Descripcio`
 
 [icon-cardiogram]: Images/icon-cardiogram-16_x_16.jpg
 [icon-departments]: Images/departments-16_x_16.jpg
