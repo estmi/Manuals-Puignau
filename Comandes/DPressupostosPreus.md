@@ -2163,6 +2163,6 @@ SELECT TOP (1000) [Id]
 Where Client = @Client
 ```
 
-[TTipusArticle]: ../Library/AFuncions#ttipusarticle
-[TTipusNode]: ../Library/AFuncions#ttipusnode
-[TColumnesPermisos]: ../Library/AFuncions#tcolumnespermisos
+[TTipusArticle]: ../Library/AFuncions.md#ttipusarticle
+[TTipusNode]: ../Library/AFuncions.md#ttipusnode
+[TColumnesPermisos]: ../Library/AFuncions.md#tcolumnespermisos

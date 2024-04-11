@@ -52,7 +52,7 @@ begin
 end;
 ```
 
-[PGestioComercial]: PGestioComercial
-[FMain.CrearFrame]: FMain#procedure-crearframe
-[FMain.ObrirFrame]: FMain#procedure-obrirframe
-[ALoggerFiles.MyInit]: ../Library/Logger/ALoggerFiles#procedure-myinitnum-integer--0
+[PGestioComercial]: PGestioComercial.md
+[FMain.CrearFrame]: FMain.md#procedure-crearframe
+[FMain.ObrirFrame]: FMain.md#procedure-obrirframe
+[ALoggerFiles.MyInit]: ../Library/Logger/ALoggerFiles.md#procedure-myinitnum-integer--0

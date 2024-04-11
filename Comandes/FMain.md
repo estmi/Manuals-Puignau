@@ -590,7 +590,7 @@ end;
 ## SQL
 
 [FMain]: Images/FMain.png
-[PermisosGestioComercial]: GestioComercial#taula-de-permisos
+[PermisosGestioComercial]: GestioComercial.md#taula-de-permisos
 [dmPressupostos.ObrirCapsDeZona]: DPressupostos.md#procedure-obrircapsdezona
-[dmPressupostos.ObrirComercials]: DPressupostos#procedure-obrircomercials
-[dmPressupostos.ObrirZones]: DPressupostos#procedure-obrirzones
+[dmPressupostos.ObrirComercials]: DPressupostos.md#procedure-obrircomercials
+[dmPressupostos.ObrirZones]: DPressupostos.md#procedure-obrirzones

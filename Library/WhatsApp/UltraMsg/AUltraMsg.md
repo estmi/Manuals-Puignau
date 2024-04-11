@@ -729,4 +729,4 @@ finalization
   TUltraMsg.Instance.FileLogger.Destruct;
 ```
 
-[ALoggerFiles]: ../../Logger/ALoggerFiles
+[ALoggerFiles]: ../../Logger/ALoggerFiles.md

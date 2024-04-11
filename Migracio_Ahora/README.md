@@ -18,12 +18,12 @@ Un cop tenim tots els stored i vistes creades, arrancarem el programa i li donar
 
 Ara si, ja podem utilitzar el programa per a importar els clients i assigna'ls-hi les dades de economicos.
 
-[ppn_clients]: MySQL#ppn_clients
-[knif_clie]: MySQL#knif_clie
-[Pers_PClientes_Datos_I]: StoredProcedures#sql
-[Pers_PClientes_Datos_Economicos_U]: StoredProcedures#sql-1
-[Pers_PClientes_Datos_Comerciales_U]: StoredProcedures#sql-2
-[Pers_PFormasPago_I]: StoredProcedures#sql-3
-[Pers_PFormasPago_Lineas_I]: StoredProcedures#sql-4
-[CrearFormesPagamentAhora]: FormesPagamentAhora#sql-per-a-crear-totes-les-formes-de-pagament
+[ppn_clients]: MySQL.md#ppn_clients
+[knif_clie]: MySQL.md#knif_clie
+[Pers_PClientes_Datos_I]: StoredProcedures.md#sql
+[Pers_PClientes_Datos_Economicos_U]: StoredProcedures.md#sql-1
+[Pers_PClientes_Datos_Comerciales_U]: StoredProcedures.md#sql-2
+[Pers_PFormasPago_I]: StoredProcedures.md#sql-3
+[Pers_PFormasPago_Lineas_I]: StoredProcedures.md#sql-4
+[CrearFormesPagamentAhora]: FormesPagamentAhora.md#sql-per-a-crear-totes-les-formes-de-pagament
 [..]: ..

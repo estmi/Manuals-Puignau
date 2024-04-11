@@ -50,26 +50,26 @@
 
 #### [UML][DashboardsUML]
 
-[MArticlePreparaExcepcio]: Comandes/MArticlePreparaExcepcio
-[DPressupostos]: Comandes/DPressupostos
-[FMain]: Comandes/FMain
-[MGestioComercial]: Comandes/MGestioComercial
-[PGestioComercial]: Comandes/PGestioComercial
+[MArticlePreparaExcepcio]: Comandes/MArticlePreparaExcepcio.md
+[DPressupostos]: Comandes/DPressupostos.md
+[FMain]: Comandes/FMain.md
+[MGestioComercial]: Comandes/MGestioComercial.md
+[PGestioComercial]: Comandes/PGestioComercial.md
 
-[AUltraMsg]: Library/WhatsApp/UltraMsg/AUltraMsg
-[ALoggerFiles]: Library/Logger/ALoggerFiles
+[AUltraMsg]: Library/WhatsApp/UltraMsg/AUltraMsg.md
+[ALoggerFiles]: Library/Logger/ALoggerFiles.md
 
-[READMEAhora]: Migracio_Ahora/README
-[AFormesPagament]: Migracio_Ahora/AFormesPagament
-[DAhora]: Migracio_Ahora/DAhora
-[MySQL]: Migracio_Ahora/MySQL
-[StoredProcedures]: Migracio_Ahora/StoredProcedures
-[GenerarFormesPagament]: Migracio_Ahora/FormesPagamentAhora
+[READMEAhora]: Migracio_Ahora/README.md
+[AFormesPagament]: Migracio_Ahora/AFormesPagament.md
+[DAhora]: Migracio_Ahora/DAhora.md
+[MySQL]: Migracio_Ahora/MySQL.md
+[StoredProcedures]: Migracio_Ahora/StoredProcedures.md
+[GenerarFormesPagament]: Migracio_Ahora/FormesPagamentAhora.md
 
-[READMECalculKg]: CalculKgNewronia/README
-[DCalculKg]: CalculKgNewronia/DCalculKg
-[MCalculKg]: CalculKgNewronia/MCalculKg
+[READMECalculKg]: CalculKgNewronia/README.md
+[DCalculKg]: CalculKgNewronia/DCalculKg.md
+[MCalculKg]: CalculKgNewronia/MCalculKg.md
 
-[Dashboards]: FlexyGO/Dashboards/Dashboards
-[Dashboards 2]: FlexyGO/Dashboards/Dashboards_2
+[Dashboards]: FlexyGO/Dashboards/Dashboards.md
+[Dashboards 2]: FlexyGO/Dashboards/Dashboards_2.md
 [DashboardsUML]: FlexyGO/Dashboards/Images/Dashboards%20ER.png
